@@ -14,22 +14,30 @@ $#b=$#array-1;#让数组b去掉多余的元素（通过改变数组b最后一位
 print "@b\n";
 print "$#b\n";
 
+##这里你确定改变最后一个数组的下标后，数组的最后一个元素也被去掉？
+
+
 @sorted =sort @b;
 print "@sorted";
 
-$countA=1;
-$countB=0;
+    $countB=0;
 
 for($a=0;$a<=$#b;$a++){
   if(@sorted[$a]==@sorted[$a+1]){
-    $countA=$countA+1;
+    $countA=$countA+1; 
   }
   else {
     @c[$countB]="$countA@sorted[$a]"
     $countB=$countB+1;
+    $countA=1;   ##$countA在统计下一个的时候要初始化
+
     }
-}
+
 print "@c\n";
 
 print "Press <Enter> to continue...";
 <STDIN>
+}
+
+##统计数组里面元素的个数可以用一种简单的方法:http://bytes.com/topic/perl/answers/617195-counting-duplicate-array-elements
+
